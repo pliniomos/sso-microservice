@@ -25,7 +25,7 @@ public class ResourceAccountServiceImpl implements ResourceAccountService {
 		try {
 			template.postForEntity(this.resourceAccountUrl + "availability", httpEntity, Void.class);
 		} catch (HttpClientErrorException e) {
-			throw new InvalidEmailOrPasswordException(ExceptionMessages.EXCEPTION_MSG_INVALID_EMAIL);
+			throw new InvalidEmailOrPasswordException(ExceptionMessages.EXCEPTION_MSG_INVALID_LOGIN);
 		}
 	}
 

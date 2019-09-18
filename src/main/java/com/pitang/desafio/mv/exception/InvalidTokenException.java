@@ -13,7 +13,7 @@ public class InvalidTokenException extends ResponseStatusException {
 	private static final long serialVersionUID = 8145239744295697100L;
 
 	public InvalidTokenException() {
-		super(HttpStatus.CONFLICT, ExceptionMessages.EXCEPTION_INVALID_TOKEN);
+		super(HttpStatus.UNAUTHORIZED, ExceptionMessages.EXCEPTION_MSG_INVALID_TOKEN);
 	}
 
 }
