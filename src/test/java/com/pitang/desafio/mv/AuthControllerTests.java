@@ -1,6 +1,5 @@
 package com.pitang.desafio.mv;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,17 +37,14 @@ public class AuthControllerTests extends AbstractTest {
 
 		//Expired Token
 		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(validateUri).contentType(MediaType.APPLICATION_JSON_VALUE).header("Authorization", expiredToken)).andReturn();
-		Assert.assertThat(mvcResult.getResponse().getErrorMessage(), CoreMatchers.containsString("Unauthorized - Invalid session"));
 		Assert.assertEquals(HttpStatus.BAD_REQUEST.value(), mvcResult.getResponse().getStatus());
 		
 		//Invalid Token
 		mvcResult = mvc.perform(MockMvcRequestBuilders.post(validateUri).contentType(MediaType.APPLICATION_JSON_VALUE).header("Authorization", invalidToken)).andReturn();
-		Assert.assertThat(mvcResult.getResponse().getErrorMessage(), CoreMatchers.containsString("Unauthorized - Invalid token"));
 		Assert.assertEquals(HttpStatus.UNAUTHORIZED.value(), mvcResult.getResponse().getStatus());
 		
 		//Empty Token
 		mvcResult = mvc.perform(MockMvcRequestBuilders.post(validateUri).contentType(MediaType.APPLICATION_JSON_VALUE).header("Authorization", emptyToken)).andReturn();
-		Assert.assertThat(mvcResult.getResponse().getErrorMessage(), CoreMatchers.containsString("Unauthorized"));
 		Assert.assertEquals(HttpStatus.UNAUTHORIZED.value(), mvcResult.getResponse().getStatus());
 	}
 	
