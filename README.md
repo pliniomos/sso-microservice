@@ -33,15 +33,15 @@ $ java -jar desafio.pitang.mv.singleSingOn-0.0.1-SNAPSHOT.jar
 ```
 A aplicação será iniciada na porta 8090 do Host:
 
-http://localhost:8090
+http://localhost:8091
 
 #### Rotas
 
 | Descrição | Endereço 							|
 | --------- | --------------------------------	|
-| SignIn    | [http://localhost:8090/signin] 	|
-| SignOut   | [http://localhost:8090/signout] 	|
-| Authorize | [http://localhost:8090/authorize] |
+| SignIn    | [http://localhost:8091/signin] 	|
+| SignOut   | [http://localhost:8091/signout] 	|
+| Authorize | [http://localhost:8091/authorize] |
 
 ### Principais Guias, Ferramentas e Bibliotecas utilizados no desenvolvimento	
 
