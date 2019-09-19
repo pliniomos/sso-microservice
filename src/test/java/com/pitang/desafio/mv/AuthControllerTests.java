@@ -25,8 +25,7 @@ public class AuthControllerTests extends AbstractTest {
 	private String validToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxdyIsImV4cCI6MTczNDcyMjY1NDl9.6-gMpSEuDaIOwrfBqZh9-6RcuX3EOz0a8zh-BDN3RntW3AMBvukzgGQ_uOmKGYfscYgFuUgTH9xTKeJqryuMug";
 	private String emptyToken = "";
 	
-	private ClientAndServer mockServerSuccess;
-	private ClientAndServer mockServerError;
+	private ClientAndServer mockResourceAccountServers;
 
 	@Override
 	@Before
@@ -60,21 +59,45 @@ public class AuthControllerTests extends AbstractTest {
 	}
 	
 	@Test
-	public void signIn_withSuccess() throws Exception {
+	public void signIn_withError() throws Exception {
 
-		mockServerSuccess = ClientAndServer.startClientAndServer(8090);
-		mockServerSuccess.when(
-				HttpRequest.request().withMethod("POST"))
+		mockResourceAccountServers = ClientAndServer.startClientAndServer(8090);
+		mockResourceAccountServers.when(
+				HttpRequest.request()
+					.withMethod("POST")
+					.withPath("/availability")
+					.withBody("{\"login\":\"login\",\"password\":\"password\"}"))
 		.respond(HttpResponse.response().withStatusCode(200));
 
 		UserAuthDTO userAuthDTO = new UserAuthDTO();
 		userAuthDTO.setLogin("login");
-		userAuthDTO.setLogin("senha");
+		userAuthDTO.setPassword("password");
 
 		String inputJson = super.mapToJson(userAuthDTO);
 		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(signinUri).contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 		Assert.assertEquals(HttpStatus.OK.value(), mvcResult.getResponse().getStatus());
-		mockServerSuccess.close();
+		mockResourceAccountServers.close();
+	}
+	
+	@Test
+	public void signIn_withSuccess() throws Exception {
+
+		mockResourceAccountServers = ClientAndServer.startClientAndServer(8090);
+		mockResourceAccountServers.when(
+				HttpRequest.request()
+					.withMethod("POST")
+					.withPath("/availability")
+					.withBody("{\"login\":\"login\",\"password\":\"password\"}"))
+		.respond(HttpResponse.response().withStatusCode(200));
+
+		UserAuthDTO userAuthDTO = new UserAuthDTO();
+		userAuthDTO.setLogin("login");
+		userAuthDTO.setPassword("password");
+
+		String inputJson = super.mapToJson(userAuthDTO);
+		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(signinUri).contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+		Assert.assertEquals(HttpStatus.OK.value(), mvcResult.getResponse().getStatus());
+		mockResourceAccountServers.close();
 	}
 
 }

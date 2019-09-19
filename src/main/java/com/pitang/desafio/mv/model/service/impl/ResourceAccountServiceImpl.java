@@ -2,12 +2,13 @@ package com.pitang.desafio.mv.model.service.impl;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.pitang.desafio.mv.dto.UserAuthDTO;
-import com.pitang.desafio.mv.exception.InvalidEmailOrPasswordException;
 import com.pitang.desafio.mv.model.service.ResourceAccountService;
 import com.pitang.desafio.mv.util.ExceptionMessages;
 
@@ -25,7 +26,7 @@ public class ResourceAccountServiceImpl implements ResourceAccountService {
 		try {
 			template.postForEntity(this.resourceAccountUrl + "availability", httpEntity, Void.class);
 		} catch (HttpClientErrorException e) {
-			throw new InvalidEmailOrPasswordException(ExceptionMessages.EXCEPTION_MSG_INVALID_LOGIN);
+			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, ExceptionMessages.EXCEPTION_MSG_INVALID_LOGIN);
 		}
 	}
 

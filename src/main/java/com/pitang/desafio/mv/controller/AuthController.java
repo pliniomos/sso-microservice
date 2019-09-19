@@ -8,11 +8,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.pitang.desafio.mv.dto.UserAuthDTO;
-import com.pitang.desafio.mv.exception.UnauthorizedException;
 import com.pitang.desafio.mv.model.service.ResourceAccountService;
 import com.pitang.desafio.mv.token.TokenService;
+import com.pitang.desafio.mv.util.ExceptionMessages;
 
 @RestController
 public class AuthController implements AuthApi {
@@ -35,7 +36,7 @@ public class AuthController implements AuthApi {
 		String loginByToken = TokenService.getJwtsSubjectByToken(request.getHeader("Authorization"));
 
 		if(StringUtils.isEmpty(loginByToken)) {
-			throw new UnauthorizedException();
+			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, ExceptionMessages.EXCEPTION_MSG_UNAUTHORIZED);
 		}
 
 		UserAuthDTO userAuthDTO = new UserAuthDTO();

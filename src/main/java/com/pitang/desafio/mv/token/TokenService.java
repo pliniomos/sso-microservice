@@ -3,11 +3,12 @@ package com.pitang.desafio.mv.token;
 import java.util.Date;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
+import org.springframework.web.server.ResponseStatusException;
 
-import com.pitang.desafio.mv.exception.ExpiredTokenException;
-import com.pitang.desafio.mv.exception.InvalidTokenException;
 import com.pitang.desafio.mv.util.Constants;
+import com.pitang.desafio.mv.util.ExceptionMessages;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
@@ -20,7 +21,7 @@ public class TokenService {
 	}
 
 	public static HttpHeaders setBearerAuthorization(HttpHeaders httpHeaders, String username) {
-
+		
 		Date expirationDate = new Date(System.currentTimeMillis() + Constants.TOKEN_EXPIRATION_TIME);
 
 		String tokenJWT = Jwts.builder()
@@ -51,9 +52,9 @@ public class TokenService {
 					.getBody()
 					.getSubject();
 		} catch (ExpiredJwtException e) {
-			throw new ExpiredTokenException();
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ExceptionMessages.EXCEPTION_MSG_EXPIRED_TOKEN);
 		} catch (JwtException e) {
-			throw new InvalidTokenException();
+			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, ExceptionMessages.EXCEPTION_MSG_INVALID_TOKEN);
 		}
 
 	}

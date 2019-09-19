@@ -63,3 +63,5 @@ http://localhost:8090
 | https://www.baeldung.com/spring-security-custom-filter |
 | http://andreybleme.com/2016-11-27/cors-spring/ |
 | http://wiremock.org/docs/getting-started/ |
+| https://www.programcreek.com/java-api-examples/?api=org.mockserver.client.server.MockServerClient |
+

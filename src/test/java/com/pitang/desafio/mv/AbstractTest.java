@@ -1,11 +1,6 @@
 package com.pitang.desafio.mv;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
-
 import org.junit.runner.RunWith;
-import org.mockserver.integration.ClientAndServer;
-import org.mockserver.model.HttpRequest;
-import org.mockserver.model.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
