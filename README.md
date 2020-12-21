@@ -22,14 +22,14 @@ A aplicação foi desenvolvida com Spring Boot.
 Para realizar o processo de Build e instalar as dependências do projeto, deve-se executar o Maven:
 
 ```sh
-$ cd br.tec.plin.sso-service
+$ cd sso-microservice
 $ mvn clean install
 ```
 
 Execução da aplicação após Build.
 
 ```sh
-$ cd br.tec.plin.sso-service
+$ cd sso-microservice
 $ cd target
 $ java -jar br.tec.plin.sso-service-0.0.1-SNAPSHOT.jar
 ```
