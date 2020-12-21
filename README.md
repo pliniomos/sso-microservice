@@ -1,6 +1,6 @@
 # Single Sign On Microservice
 
-Desenvolvido como parte do Desafio para ingresso na MV/SA em 2019.
+#### Desenvolvido como parte do Desafio para ingresso na MV/SA em 2019.
 
 Aplicação para exposição de API RESTFul para geração de token no padrão Oauth2 e autenticação de usuário.
 
@@ -16,13 +16,13 @@ Aplicação para exposição de API RESTFul para geração de token no padrão O
   - As senhas dos usuários cadastrados são persistidas criptografadas
   - Lombok foi utilizado
 
-### Pré Requisitos
+#### Pré Requisitos
 
 - Java 8
 - Maven
 - Acesso a uma conta na AWS 
 
-### Build
+#### Build
 
 A aplicação foi desenvolvida com Spring Boot.
 
@@ -48,7 +48,7 @@ Por isso você deve configurar o seguinte parâmetro na seção "AWS Systems Man
 
 - token.secret.key
 
-(Lembre-se de configura o parâmetro por profile)
+(Lembre-se de configurar o parâmetro por profile)
 
 Exemplo:
 
@@ -76,7 +76,7 @@ http://localhost:8091
 | SignOut   | [http://localhost:8091/signout] 	|
 | Authorize | [http://localhost:8091/authorize] |
 
-### Principais Guias, Ferramentas e Bibliotecas utilizados no desenvolvimento	
+#### Principais Guias, Ferramentas e Bibliotecas utilizados no desenvolvimento	
 
 | Referências |
 | ------ |
