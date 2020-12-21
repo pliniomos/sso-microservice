@@ -5,6 +5,7 @@ Desenvolvido como parte do Desafio para ingresso na MV/SA em 2019.
 Aplicação para exposição de API RESTFul para geração de token no padrão Oauth2 e autenticação de usuário.
 
   - Variáveis de configuração por ambiente persistidas na AWS Parameter Store
+  - AWS CDK
   - Processo de Build via Maven
   - Parsistência com Hibernate
   - Framework Spring (boot - versão 2.1.4.RELEASE)
@@ -15,6 +16,12 @@ Aplicação para exposição de API RESTFul para geração de token no padrão O
   - As senhas dos usuários cadastrados são persistidas criptografadas
   - Lombok foi utilizado
 
+### Pré Requisitos
+
+- Java 8
+- Maven
+- Acesso a uma conta na AWS 
+
 ### Build
 
 A aplicação foi desenvolvida com Spring Boot.
@@ -23,15 +30,39 @@ Para realizar o processo de Build e instalar as dependências do projeto, deve-s
 
 ```sh
 $ cd sso-microservice
-$ mvn clean install
+$ mvn clean install compile
 ```
+Antes de executar a aplicação o AWS CDK deve ser instalado e configurado:
 
-Execução da aplicação após Build.
+https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html
+
+Após instalação do AWS CDK lembre-se de configurá-lo em seu ambiente:
+
+```sh
+$ aws configure
+```
+Serão solicitados sua "aws_access_key_id" e "aws_secret_access_key" que devem ser obtidas na seção IAM do seu painel de controle da AWS.
+
+A aplicação utiliza variáveis de configuração por ambiente persistidas na AWS Parameter Store.
+Por isso você deve configurar o seguinte parâmetro na seção "AWS Systems Manager > Parameter Store" no seu painel de controle da AWS:
+
+- token.secret.key
+
+(Lembre-se de configura o parâmetro por profile)
+
+Exemplo:
+
+- /config/sso-microservice_dev/token.secret.key
+- /config/sso-microservice_test/token.secret.key
+- /config/sso-microservice_prd/token.secret.key
+
+Por segurança procure configurar uma chave forte e diferente entre os profiles, a chave configurada nessa seção será utilizada como "secret key" do JWT Token da aplicação.
+
+#### Execução da aplicação após Build.
 
 ```sh
 $ cd sso-microservice
-$ cd target
-$ java -jar sso-microservice-0.0.1-SNAPSHOT.jar
+$ mvn spring-boot:run -Drun.arguments=--spring.profiles.active=dev
 ```
 A aplicação será iniciada na porta 8090 do Host:
 
@@ -49,6 +80,8 @@ http://localhost:8091
 
 | Referências |
 | ------ |
+| https://docs.aws.amazon.com/cdk/latest/guide/work-with-cdk-java.html |
+| https://docs.aws.amazon.com/cdk/latest/guide/home.html |
 | https://maven.apache.org/guides/index.html |
 | https://spring.io/guides/gs/securing-web/ 
 | https://www.baeldung.com/spring-security-custom-filter |
