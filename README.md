@@ -48,7 +48,7 @@ Por isso você deve configurar o seguinte parâmetro na seção "AWS Systems Man
 
 - token.secret.key
 
-(Lembre-se de configura o parâmetro por profile)
+(Lembre-se de configurar o parâmetro por profile)
 
 Exemplo:
 
