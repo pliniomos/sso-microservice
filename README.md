@@ -56,7 +56,7 @@ Exemplo:
 - /config/sso-microservice_test/token.secret.key
 - /config/sso-microservice_prd/token.secret.key
 
-* Por segurança procure configurar uma chave forte e diferente entre os profiles, a chave configurada nessa seção será utilizada como "secret key" do JWT Token da aplicação
+Por segurança procure configurar uma chave forte e diferente entre os profiles, a chave configurada nessa seção será utilizada como "secret key" do JWT Token da aplicação.
 
 Execução da aplicação após Build.
 
