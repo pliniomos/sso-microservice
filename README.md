@@ -1,4 +1,4 @@
-# Single Sign On Service
+# Single Sign On Microservice
 
 Desenvolvido como parte do desafio para ingresso na MV/SA em 2019.
 
