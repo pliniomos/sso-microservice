@@ -31,7 +31,7 @@ Execução da aplicação após Build.
 ```sh
 $ cd sso-microservice
 $ cd target
-$ java -jar br.tec.plin.sso-service-0.0.1-SNAPSHOT.jar
+$ java -jar sso-microservice-0.0.1-SNAPSHOT.jar
 ```
 A aplicação será iniciada na porta 8090 do Host:
 
