@@ -23,15 +23,14 @@ Para realizar o processo de Build e instalar as dependências do projeto, deve-s
 
 ```sh
 $ cd sso-microservice
-$ mvn clean install
+$ mvn clean install compile
 ```
 
 Execução da aplicação após Build.
 
 ```sh
 $ cd sso-microservice
-$ cd target
-$ java -jar sso-microservice-0.0.1-SNAPSHOT.jar
+$ mvn spring-boot:run -Drun.arguments=--spring.profiles.active=dev
 ```
 A aplicação será iniciada na porta 8090 do Host:
 
