@@ -26,15 +26,31 @@ Para realizar o processo de Build e instalar as dependências do projeto, deve-s
 $ cd sso-microservice
 $ mvn clean install compile
 ```
-Antes de executar a aplicação o AWS CDK deve ser instalado
+Antes de executar a aplicação o AWS CDK deve ser instalado e configurado:
 
-[https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html]
+https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html
 
 Após instalação do AWS CDK lembre-se de configurá-lo em seu ambiente:
 
 ```sh
 $ aws configure
 ```
+Serão solicitados sua "aws_access_key_id" e "aws_secret_access_key" que devem ser obtidas na seção IAM do seu painel de controle da AWS.
+
+A aplicação utiliza variáveis de configuração por ambiente persistidas na AWS Parameter Store
+Por isso você deve configurar o seguintes parâmetro na seção "AWS Systems Manager > Parameter Store" no seu painel de controle da AWS.:
+
+- /config/sso-microservice_{PROFILE}/token.secret.key
+
+(Lembre-se de configurar os parâmetros por profile)
+
+Exemplo:
+
+- /config/sso-microservice_dev/token.secret.key
+- /config/sso-microservice_test/token.secret.key
+- /config/sso-microservice_prd/token.secret.key
+
+* Por segurança procure configurar uma chave forte e diferente entre os profiles, a chave configurada nessa seção será utilizada como "secret key" do JWT Token da aplicação
 
 Execução da aplicação após Build.
 
