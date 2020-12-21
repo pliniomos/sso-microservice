@@ -4,7 +4,6 @@ Desenvolvido como parte do Desafio para ingresso na MV/SA em 2019.
 
 Aplicação para exposição de API RESTFul para geração de token no padrão Oauth2 e autenticação de usuário.
 
-  - Banco de dados em memória, H2
   - Processo de Build via Maven
   - Parsistência com Hibernate
   - Framework Spring (boot - versão 2.1.4.RELEASE)
