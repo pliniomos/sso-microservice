@@ -5,6 +5,7 @@ Desenvolvido como parte do Desafio para ingresso na MV/SA em 2019.
 Aplicação para exposição de API RESTFul para geração de token no padrão Oauth2 e autenticação de usuário.
 
   - Variáveis de configuração por ambiente persistidas na AWS Parameter Store
+  - AWS CDK
   - Processo de Build via Maven
   - Parsistência com Hibernate
   - Framework Spring (boot - versão 2.1.4.RELEASE)
@@ -24,6 +25,15 @@ Para realizar o processo de Build e instalar as dependências do projeto, deve-s
 ```sh
 $ cd sso-microservice
 $ mvn clean install compile
+```
+Antes de executar a aplicação o AWS CDK deve ser instalado
+
+[https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html]
+
+Após instalação do AWS CDK lembre-se de configurá-lo em seu ambiente:
+
+```sh
+$ aws configure
 ```
 
 Execução da aplicação após Build.
