@@ -1,4 +1,4 @@
-package com.pitang.desafio.mv.model.service.impl;
+package br.tec.plin.sso.service.impl;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -8,9 +8,9 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.pitang.desafio.mv.dto.UserAuthDTO;
-import com.pitang.desafio.mv.model.service.ResourceAccountService;
-import com.pitang.desafio.mv.util.ExceptionMessages;
+import br.tec.plin.sso.dto.UserAuthDTO;
+import br.tec.plin.sso.service.ResourceAccountService;
+import br.tec.plin.sso.util.ExceptionMessages;
 
 @Service
 public class ResourceAccountServiceImpl implements ResourceAccountService {

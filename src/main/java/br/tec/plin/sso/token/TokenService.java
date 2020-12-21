@@ -1,14 +1,15 @@
-package com.pitang.desafio.mv.token;
+package br.tec.plin.sso.token;
 
 import java.util.Date;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StringUtils;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.pitang.desafio.mv.util.Constants;
-import com.pitang.desafio.mv.util.ExceptionMessages;
+import br.tec.plin.sso.util.Constants;
+import br.tec.plin.sso.util.ExceptionMessages;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
@@ -17,17 +18,20 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 public class TokenService {
 
+	@Value("${token.secret.key}")
+	private static String tokenSecretKey;
+
 	private TokenService() {
 	}
 
 	public static HttpHeaders setBearerAuthorization(HttpHeaders httpHeaders, String username) {
-		
+
 		Date expirationDate = new Date(System.currentTimeMillis() + Constants.TOKEN_EXPIRATION_TIME);
 
 		String tokenJWT = Jwts.builder()
 				.setSubject(username)
 				.setExpiration(expirationDate)
-				.signWith(SignatureAlgorithm.HS512, Constants.TOKEN_SECRET_KEY)
+				.signWith(SignatureAlgorithm.HS512, tokenSecretKey)
 				.compact();
 
 		httpHeaders.add("Access-Control-Expose-Headers", "Authorization");
@@ -47,7 +51,7 @@ public class TokenService {
 
 		try {
 			return Jwts.parser()
-					.setSigningKey(Constants.TOKEN_SECRET_KEY)
+					.setSigningKey(tokenSecretKey)
 					.parseClaimsJws(authorization.replace(Constants.TOKEN_PREFIX, ""))
 					.getBody()
 					.getSubject();

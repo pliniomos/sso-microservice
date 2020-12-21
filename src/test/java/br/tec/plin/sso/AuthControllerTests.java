@@ -1,4 +1,4 @@
-package com.pitang.desafio.mv;
+package br.tec.plin.sso;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -11,19 +11,19 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.pitang.desafio.mv.dto.UserAuthDTO;
+import br.tec.plin.sso.dto.UserAuthDTO;
 
 public class AuthControllerTests extends AbstractTest {
 
 	private String signinUri = "/signin";
 	private String validateUri = "/validate";
-	
+
 	//Token expirado
 	private String expiredToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aS5wbGluaW9AZ21haWwuY29tIiwiZXhwIjoxNTU3MDQ2NTExfQ.6rz8kC3ZreOzfS6EBiz29HoWMGVXlcdgERUBV4A6GtdbN7AI3VOUrgCIGvkXf19nD83jN1zBVF2JuQsLMhWj_A";
 	private String invalidToken = "Bearer 12wqbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aS5wbGluaW9AZ21haWwuY29tIiwiZXhwIjoxNTU3MDQ2NTExfQ.6rz8kC3ZreOzfS6EBiz29HoWMGVXlcdgERUBV4A6GtdbN7AI3VOUrgCIGvkXf19nD83jN1zBVF2JuQsLMhWj_A";
 	private String validToken = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJxdyIsImV4cCI6MTczNDcyMjY1NDl9.6-gMpSEuDaIOwrfBqZh9-6RcuX3EOz0a8zh-BDN3RntW3AMBvukzgGQ_uOmKGYfscYgFuUgTH9xTKeJqryuMug";
 	private String emptyToken = "";
-	
+
 	private ClientAndServer mockResourceAccountServers;
 
 	@Override
@@ -38,22 +38,22 @@ public class AuthControllerTests extends AbstractTest {
 		//Expired Token
 		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(validateUri).contentType(MediaType.APPLICATION_JSON_VALUE).header("Authorization", expiredToken)).andReturn();
 		Assert.assertEquals(HttpStatus.BAD_REQUEST.value(), mvcResult.getResponse().getStatus());
-		
+
 		//Invalid Token
 		mvcResult = mvc.perform(MockMvcRequestBuilders.post(validateUri).contentType(MediaType.APPLICATION_JSON_VALUE).header("Authorization", invalidToken)).andReturn();
 		Assert.assertEquals(HttpStatus.UNAUTHORIZED.value(), mvcResult.getResponse().getStatus());
-		
+
 		//Empty Token
 		mvcResult = mvc.perform(MockMvcRequestBuilders.post(validateUri).contentType(MediaType.APPLICATION_JSON_VALUE).header("Authorization", emptyToken)).andReturn();
 		Assert.assertEquals(HttpStatus.UNAUTHORIZED.value(), mvcResult.getResponse().getStatus());
 	}
-	
+
 	@Test
 	public void validateAuthorization_withSucess() throws Exception {
 		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(validateUri).contentType(MediaType.APPLICATION_JSON_VALUE).header("Authorization", validToken)).andReturn();
 		Assert.assertEquals(HttpStatus.OK.value(), mvcResult.getResponse().getStatus());
 	}
-	
+
 	@Test
 	public void signIn_withError() throws Exception {
 
@@ -74,7 +74,7 @@ public class AuthControllerTests extends AbstractTest {
 		Assert.assertEquals(HttpStatus.OK.value(), mvcResult.getResponse().getStatus());
 		mockResourceAccountServers.close();
 	}
-	
+
 	@Test
 	public void signIn_withSuccess() throws Exception {
 

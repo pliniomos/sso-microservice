@@ -1,4 +1,4 @@
-package com.pitang.desafio.mv.dto;
+package br.tec.plin.sso.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

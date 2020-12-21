@@ -1,8 +1,8 @@
-package com.pitang.desafio.mv.model.service;
+package br.tec.plin.sso.service;
 
 import org.springframework.stereotype.Service;
 
-import com.pitang.desafio.mv.dto.UserAuthDTO;
+import br.tec.plin.sso.dto.UserAuthDTO;
 
 @Service
 public interface ResourceAccountService {

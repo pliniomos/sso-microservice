@@ -1,13 +1,12 @@
-package com.pitang.desafio.mv.controller;
+package br.tec.plin.sso.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import br.tec.plin.sso.dto.UserAuthDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
-import com.pitang.desafio.mv.dto.UserAuthDTO;
 
 /**
  * 

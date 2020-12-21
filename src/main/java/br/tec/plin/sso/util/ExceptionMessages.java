@@ -1,4 +1,4 @@
-package com.pitang.desafio.mv.util;
+package br.tec.plin.sso.util;
 
 public class ExceptionMessages {
 	

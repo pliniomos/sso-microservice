@@ -1,7 +1,9 @@
-package com.pitang.desafio.mv.controller;
+package br.tec.plin.sso.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import br.tec.plin.sso.service.ResourceAccountService;
+import br.tec.plin.sso.token.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -10,20 +12,18 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.pitang.desafio.mv.dto.UserAuthDTO;
-import com.pitang.desafio.mv.model.service.ResourceAccountService;
-import com.pitang.desafio.mv.token.TokenService;
-import com.pitang.desafio.mv.util.ExceptionMessages;
+import br.tec.plin.sso.dto.UserAuthDTO;
+import br.tec.plin.sso.util.ExceptionMessages;
 
 @RestController
 public class AuthController implements AuthApi {
 
 	@Autowired
-	private ResourceAccountService authService;
+	private ResourceAccountService resourceAccountService;
 
 	public ResponseEntity<UserAuthDTO> signIn(UserAuthDTO body) {
 
-		authService.checkAvailability(body);
+		resourceAccountService.checkAvailability(body);
 
 		HttpHeaders responseHeaders = TokenService.setBearerAuthorization(new HttpHeaders(), body.getLogin());
 

@@ -1,4 +1,4 @@
-package com.pitang.desafio.mv.util;
+package br.tec.plin.sso.util;
 
 public class Constants {
 	
@@ -6,7 +6,7 @@ public class Constants {
 
 	// JWT Auth
 	public static final long TOKEN_EXPIRATION_TIME = 86400000; // 1 dia
-	public static final String TOKEN_SECRET_KEY = "3D8F96F1AC8F84EECEA69BFBC2339-F744924D17E393DC29C992D6BDDEB-8AFC58D34B37618ED5E86C69A9549-268B462413D7ABD9BAD5959A9A63E";
+//	public static final String TOKEN_SECRET_KEY = "3D8F96F1AC8F84EECEA69BFBC2339-F744924D17E393DC29C992D6BDDEB-8AFC58D34B37618ED5E86C69A9549-268B462413D7ABD9BAD5959A9A63E";
 	public static final String TOKEN_PREFIX = "Bearer";
 	public static final String TOKEN_HEADER_PARAM_NAME = "Authorization";
 

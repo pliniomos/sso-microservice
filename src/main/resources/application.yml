@@ -1,0 +1,36 @@
+spring:
+    application:
+        name: sso-microservice
+
+server:
+    port: 8091
+    servlet:
+        context-path: /sso-microservice
+
+# Parameters from AWS SSM Parameter Store
+cloud:
+    aws:
+        paramstore:
+            enabled: true
+        region:
+            static: ${cloud.aws.region.static}
+        stack:
+            auto: false
+        s3:
+            endpoint: https://s3.amazonaws.com/
+
+management:
+    endpoint:
+        metrics:
+            enabled: true
+        prometheus:
+            enabled: true
+    metrics:
+        export:
+            prometheus:
+                enabled: true
+
+desafio:
+    pitang:
+        mv:
+            resourceAccountUrl: http://localhost:8090/
