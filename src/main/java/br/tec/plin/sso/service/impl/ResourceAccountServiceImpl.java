@@ -15,7 +15,7 @@ import br.tec.plin.sso.util.ExceptionMessages;
 @Service
 public class ResourceAccountServiceImpl implements ResourceAccountService {
 
-	@Value("${desafio.pitang.mv.resourceAccountUrl}")
+	@Value("${br.tec.plin.resource-account-url}")
 	private String resourceAccountUrl;
 
 	@Override

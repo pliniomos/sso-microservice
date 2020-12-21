@@ -15,7 +15,7 @@ import br.tec.plin.sso.dto.UserAuthDTO;
 
 public class AuthControllerTests extends AbstractTest {
 
-	private String signinUri = "/signin";
+	private String signInUri = "/signin";
 	private String validateUri = "/validate";
 
 	//Token expirado
@@ -33,7 +33,7 @@ public class AuthControllerTests extends AbstractTest {
 	}
 
 	@Test
-	public void validateAuthorization_withErros() throws Exception {
+	public void validateAuthorization_withErrors() throws Exception {
 
 		//Expired Token
 		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(validateUri).contentType(MediaType.APPLICATION_JSON_VALUE).header("Authorization", expiredToken)).andReturn();
@@ -49,7 +49,7 @@ public class AuthControllerTests extends AbstractTest {
 	}
 
 	@Test
-	public void validateAuthorization_withSucess() throws Exception {
+	public void validateAuthorization_withSuccess() throws Exception {
 		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(validateUri).contentType(MediaType.APPLICATION_JSON_VALUE).header("Authorization", validToken)).andReturn();
 		Assert.assertEquals(HttpStatus.OK.value(), mvcResult.getResponse().getStatus());
 	}
@@ -70,7 +70,7 @@ public class AuthControllerTests extends AbstractTest {
 		userAuthDTO.setPassword("password");
 
 		String inputJson = super.mapToJson(userAuthDTO);
-		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(signinUri).contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(signInUri).contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 		Assert.assertEquals(HttpStatus.OK.value(), mvcResult.getResponse().getStatus());
 		mockResourceAccountServers.close();
 	}
@@ -91,7 +91,7 @@ public class AuthControllerTests extends AbstractTest {
 		userAuthDTO.setPassword("password");
 
 		String inputJson = super.mapToJson(userAuthDTO);
-		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(signinUri).contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
+		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(signInUri).contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
 		Assert.assertEquals(HttpStatus.OK.value(), mvcResult.getResponse().getStatus());
 		mockResourceAccountServers.close();
 	}

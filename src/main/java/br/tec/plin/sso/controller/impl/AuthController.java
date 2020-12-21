@@ -1,7 +1,8 @@
-package br.tec.plin.sso.controller;
+package br.tec.plin.sso.controller.impl;
 
 import javax.servlet.http.HttpServletRequest;
 
+import br.tec.plin.sso.controller.AuthApi;
 import br.tec.plin.sso.service.ResourceAccountService;
 import br.tec.plin.sso.token.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
