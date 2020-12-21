@@ -58,7 +58,7 @@ Exemplo:
 
 Por segurança procure configurar uma chave forte e diferente entre os profiles, a chave configurada nessa seção será utilizada como "secret key" do JWT Token da aplicação.
 
-Execução da aplicação após Build.
+#### Execução da aplicação após Build.
 
 ```sh
 $ cd sso-microservice
