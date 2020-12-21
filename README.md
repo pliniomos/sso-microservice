@@ -16,6 +16,12 @@ Aplicação para exposição de API RESTFul para geração de token no padrão O
   - As senhas dos usuários cadastrados são persistidas criptografadas
   - Lombok foi utilizado
 
+### Pré Requisitos
+
+- Java 8
+- Maven
+- Acesso a uma conta na AWS 
+
 ### Build
 
 A aplicação foi desenvolvida com Spring Boot.
@@ -37,12 +43,12 @@ $ aws configure
 ```
 Serão solicitados sua "aws_access_key_id" e "aws_secret_access_key" que devem ser obtidas na seção IAM do seu painel de controle da AWS.
 
-A aplicação utiliza variáveis de configuração por ambiente persistidas na AWS Parameter Store
-Por isso você deve configurar o seguintes parâmetro na seção "AWS Systems Manager > Parameter Store" no seu painel de controle da AWS.:
+A aplicação utiliza variáveis de configuração por ambiente persistidas na AWS Parameter Store.
+Por isso você deve configurar o seguinte parâmetro na seção "AWS Systems Manager > Parameter Store" no seu painel de controle da AWS:
 
-- /config/sso-microservice_{PROFILE}/token.secret.key
+- token.secret.key
 
-(Lembre-se de configurar os parâmetros por profile)
+(Lembre-se de configura o parâmetro por profile)
 
 Exemplo:
 
@@ -74,6 +80,7 @@ http://localhost:8091
 
 | Referências |
 | ------ |
+| https://docs.aws.amazon.com/cdk/latest/guide/work-with-cdk-java.html |
 | https://docs.aws.amazon.com/cdk/latest/guide/home.html |
 | https://maven.apache.org/guides/index.html |
 | https://spring.io/guides/gs/securing-web/ 
