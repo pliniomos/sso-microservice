@@ -49,6 +49,7 @@ http://localhost:8091
 
 | Referências |
 | ------ |
+| https://docs.aws.amazon.com/cdk/latest/guide/home.html |
 | https://maven.apache.org/guides/index.html |
 | https://spring.io/guides/gs/securing-web/ 
 | https://www.baeldung.com/spring-security-custom-filter |
