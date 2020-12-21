@@ -1,6 +1,8 @@
-# Desafio Pitang MV
+# Single Sign On Service
 
-Criação de aplicação para expor API RESTFul para geração de token no padrão Oauth2 e autenticação de usuário.
+Desenvolvido inicialmente como parte de desafio para ingresso na MV/SA
+
+Aplicação para exposição de API RESTFul para geração de token no padrão Oauth2 e autenticação de usuário.
 
   - Banco de dados em memória, H2
   - Processo de Build via Maven
@@ -20,16 +22,16 @@ A aplicação foi desenvolvida com Spring Boot.
 Para realizar o processo de Build e instalar as dependências do projeto, deve-se executar o Maven:
 
 ```sh
-$ cd desafio.pitang.mv.singleSingOn
+$ cd br.tec.plin.sso-service
 $ mvn clean install
 ```
 
 Execução da aplicação após Build.
 
 ```sh
-$ cd desafio.pitang.mv.singleSingOn
+$ cd br.tec.plin.sso-service
 $ cd target
-$ java -jar desafio.pitang.mv.singleSingOn-0.0.1-SNAPSHOT.jar
+$ java -jar br.tec.plin.sso-service-0.0.1-SNAPSHOT.jar
 ```
 A aplicação será iniciada na porta 8090 do Host:
 
