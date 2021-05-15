@@ -1,6 +1,6 @@
 # Single Sign On Microservice
 
-#### Desenvolvido como parte do Desafio para ingresso na MV/SA em 2019.
+#### Desenvolvido como parte do Desafio para ingresso na MV/SA em 2019, porém vem sendo atualizado como recurso para estudos pessoais.
 
 Aplicação para exposição de API RESTFul para geração de token no padrão Oauth2 e autenticação de usuário.
 
